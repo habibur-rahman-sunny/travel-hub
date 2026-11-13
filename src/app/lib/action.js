@@ -1,4 +1,7 @@
 "use server";
+
+import { revalidatePath } from "next/cache";
+
 export const addDestination = async (formData) => {
     const res = await fetch('http://localhost:5000/packages', {
         method: "POST",
@@ -24,6 +27,21 @@ export const addBooking = async (data) => {
 
     const result = await res.json();
     return result;
+};
+
+export const deleteBooking = async (id) => {
+    const res = await fetch(`http://localhost:5000/bookings/${id}`, {
+        method: 'DELETE'
+    });
+
+    const data = await res.json();
+
+    if (data.deletedCount > 0) {
+        revalidatePath('/my-bookings');
+        revalidatePath(`/my-bookings/${id}`);
+    }
+
+    return data;
 };
 
 

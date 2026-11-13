@@ -3,6 +3,7 @@ import { Suspense } from "react";
 import { getBookings } from "../lib/data";
 import { Button } from "@heroui/react";
 import Link from "next/link";
+import DeleteBooking from "@/component/Button/DeleteBtn";
 
 const BookingList = async () => {
     const bookings = await getBookings();
@@ -60,9 +61,7 @@ const BookingList = async () => {
                             </div>
 
                             <div className="flex gap-3">
-                                <Button color="danger" variant="bordered" size="sm">
-                                    Cancel
-                                </Button>
+                                <DeleteBooking id={booking._id} />
                                 <Link
                                     href={`/my-bookings/${booking._id}`}
                                     className="..."
