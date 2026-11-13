@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Suspense } from "react";
 import { getBookings } from "../lib/data";
 import { Button } from "@heroui/react";
+import Link from "next/link";
 
 const BookingList = async () => {
     const bookings = await getBookings();
@@ -62,9 +63,12 @@ const BookingList = async () => {
                                 <Button color="danger" variant="bordered" size="sm">
                                     Cancel
                                 </Button>
-                                <Button color="primary" size="sm">
+                                <Link
+                                    href={`/my-bookings/${booking._id}`}
+                                    className="..."
+                                >
                                     View Details
-                                </Button>
+                                </Link>
                             </div>
                         </div>
                     </div>

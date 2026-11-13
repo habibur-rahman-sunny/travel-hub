@@ -14,3 +14,12 @@ export const getBookings = async () => {
     });
     return res.json();
 };
+
+export const getBookingDetails = async (id) => {
+    const res = await fetch(`http://localhost:5000/bookings/${id}`, {
+        cache: 'no-store'
+    });
+
+    return res.json();
+};
+

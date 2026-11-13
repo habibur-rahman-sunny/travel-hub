@@ -25,3 +25,7 @@ export const addBooking = async (data) => {
     const result = await res.json();
     return result;
 };
+
+
+
+
