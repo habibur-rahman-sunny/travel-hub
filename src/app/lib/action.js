@@ -15,7 +15,6 @@ export const addDestination = async (formData) => {
     return data;
 }
 
-
 export const addBooking = async (data) => {
     const res = await fetch('http://localhost:5000/bookings', {
         method: "POST",
